@@ -25,14 +25,30 @@ using namespace std;
 
 const ll MOD = 1e9 + 7;
 
-
-
 void solve(){
+    ll n, m;
+    cin>>n>>m;
     string s;
     cin>>s;
-    vs v{"ACE", "BDF", "CEG", "DFA", "EGB", "FAC", "GBD"};
-    fr(i, 0, sz(v)) if(v[i] == s) ret("Yes")
-    ret("No")
+    vi v(n);
+    fr(i, 0, n){
+        cin>>v[i];
+    }
+    vector<vector<char>> mp(n + 1);
+    fr(i, 0, n){
+        mp[v[i]].pb(s[i]);
+    }
+    fr(i, 1, m + 1){
+        reverse(all(mp[i]));
+        reverse(begin(mp[i]), begin(mp[i]) + 1);
+        reverse(begin(mp[i]) + 1, end(mp[i]));
+    }
+    vi index(m + 1, 0);
+    fr(i, 0, n){
+        s[i] = mp[v[i]][index[v[i]]];
+        index[v[i]]++;
+    }
+    ret(s)
 }
 
 int main(){

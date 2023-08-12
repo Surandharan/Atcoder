@@ -25,14 +25,43 @@ using namespace std;
 
 const ll MOD = 1e9 + 7;
 
-
-
 void solve(){
-    string s;
-    cin>>s;
-    vs v{"ACE", "BDF", "CEG", "DFA", "EGB", "FAC", "GBD"};
-    fr(i, 0, sz(v)) if(v[i] == s) ret("Yes")
-    ret("No")
+    ll n;
+    cin>>n;
+    vector<unordered_set<int>> mp(n);
+    fr(i, 0, n){
+        ll cnt;
+        cin>>cnt;
+        fr(j, 0, cnt){
+            ll val;
+            cin>>val;
+            mp[i].insert(val);
+        }
+    }
+
+    ll x;
+    cin>>x;
+
+    vp p;
+    fr(i, 0, n){
+        if(mp[i].count(x)){
+            p.pb({sz(mp[i]), i + 1});
+        }
+    }
+    if(sz(p) == 0) ret(0) 
+    sort(all(p));
+    vi sp;
+    ll f = p.front().first;
+    fr(i, 0, sz(p)){
+        if(p[i].first == f){
+            sp.pb(p[i].second);
+        }
+        else break;
+    }
+    cout<<sz(sp)<<endl;
+    fr(i, 0, sz(sp)) cout<<sp[i]<<" ";
+    
+
 }
 
 int main(){

@@ -25,14 +25,11 @@ using namespace std;
 
 const ll MOD = 1e9 + 7;
 
-
-
 void solve(){
-    string s;
-    cin>>s;
-    vs v{"ACE", "BDF", "CEG", "DFA", "EGB", "FAC", "GBD"};
-    fr(i, 0, sz(v)) if(v[i] == s) ret("Yes")
-    ret("No")
+   string pi = "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";
+   ll n;
+   cin>>n;
+   ret(pi.substr(0, 2 + n))
 }
 
 int main(){
